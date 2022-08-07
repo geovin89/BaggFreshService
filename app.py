@@ -2,7 +2,7 @@
 
 import aws_cdk as cdk
 
-from bagg_fresh_service.pipeline.bagg_fresh_pipeline_stack import BaggFreshServicePipelineStack
+from bagg_fresh_service.pipeline.bagg_fresh_service_pipeline_stack import BaggFreshServicePipelineStack
 
 app = cdk.App()
 BaggFreshServicePipelineStack(app, "BaggFreshServicePipelineStack",
