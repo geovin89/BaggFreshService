@@ -1,6 +1,6 @@
 import aws_cdk as core
 import aws_cdk.assertions as assertions
-from bagg_fresh_service.bagg_fresh_service_stack import BaggFreshServiceStack
+from bagg_fresh_service.infra.bagg_fresh_service_stack import BaggFreshServiceStack
 
 
 def test_sqs_queue_created():
