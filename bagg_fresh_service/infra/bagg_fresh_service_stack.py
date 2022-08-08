@@ -1,11 +1,12 @@
-from os import path
-from constructs import Construct
 from aws_cdk import (
     aws_lambda as lmb,
     aws_apigateway as apigw,
     CfnOutput,
     Stack,
 )
+from constructs import Construct
+from os import path
+from pathlib import Path
 
 
 class BaggFreshServiceStack(Stack):
@@ -13,7 +14,7 @@ class BaggFreshServiceStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
 
-        root_dir = path.dirname(__file__, '..')
+        root_dir = Path(path.dirname(__file__)).parent
 
         handler = lmb.Function(self, 'Handler',
                                runtime=lmb.Runtime.PYTHON_3_8,

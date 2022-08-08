@@ -6,6 +6,5 @@ from bagg_fresh_service.pipeline.bagg_fresh_service_pipeline_stack import BaggFr
 
 app = cdk.App()
 BaggFreshServicePipelineStack(app, "BaggFreshServicePipelineStack",
-                              env=cdk.Environment(account="141984737041", region="us-west-2")
+                              env=cdk.Environment(account='141984737041', region='us-west-2')
                               )
-app.synth()
