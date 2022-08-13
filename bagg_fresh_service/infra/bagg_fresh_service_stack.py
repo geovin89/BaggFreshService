@@ -1,6 +1,6 @@
 from aws_cdk import (
     aws_lambda as lmb,
-    aws_apigatewayv2_alpha as apigw,
+    aws_apigateway as apigw,
     CfnOutput,
     Stack,
 )
@@ -22,14 +22,11 @@ class BaggFreshServiceStack(Stack):
                                handler='simple_handler.handler',
                                code=lmb.Code.from_asset(path.join(root_dir, 'src/lambda')))
 
-        http_api = apigw.HttpApi(self, 'BaggFreshSellerHttpApi')
+        bagg_fresh_service_rest_api = apigw.LambdaRestApi(self, 'BaggFreshSellerRestApi',
+                                                          handler=handler,
+                                                          proxy=False)
 
-        http_api.add_routes(
-            path="/nearMe",
-            methods=[apigw.HttpMethod.GET],
-            integration=HttpLambdaIntegration(
-                'BaggFreshSellerLambdaIntegration', handler
-            )
-        )
+        items = bagg_fresh_service_rest_api.root.add_resource('items')
+        items.add_method('GET')
 
-        self.url_output = CfnOutput(self, 'Url', value=http_api.url)
+        self.url_output = CfnOutput(self, 'BaggFreshSellerRestApiUrl', value=bagg_fresh_service_rest_api.url)
