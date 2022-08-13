@@ -5,7 +5,6 @@ from aws_cdk import (
     Stack,
 )
 from constructs import Construct
-from aws_cdk.aws_apigatewayv2_integrations_alpha import HttpLambdaIntegration
 from os import path
 from pathlib import Path
 
